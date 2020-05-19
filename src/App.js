@@ -7,33 +7,39 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  NavLink
+  Link
 } from "react-router-dom";
+
+
+//Muốn customize class=selected, ở thành phần cha, ko phải thẻ <a> => tạo 1 func riêng
+//Tự tạo ra 1 link do mình định nghĩa
+//match kiểm tra khi nào url trùng khớp thêm class=active
+const MenuLink = ({label, to, activeOnlyWhenExact}) => {
+  return (
+    <Route 
+      path={to} exact={activeOnlyWhenExact} children={({match}) => {
+        var active = match ? "nav-item selected" : '';
+        return (
+          <li className={active}>
+            <Link className="nav-link" to={to}>
+              {label}
+            </Link>
+          </li>
+        )
+      }}
+    />
+  )
+}
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <ul className="nav navbar-nav">
-                <li className="nav-item">
-                  <NavLink 
-                    activeClassName="selected"
-                    className="nav-link" exact to="/" 
-                  >Trang chủ <span className="sr-only">(current)</span></NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink 
-                    activeClassName="selected"
-                    className="nav-link" to="/about"
-                  >Giới thiệu</NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink 
-                    activeClassName="selected"
-                    className="nav-link" to="/contact"
-                  >Liên hệ</NavLink>
-                </li>
+              <MenuLink label="Trang chủ" to='/' activeOnlyWhenExact="true"/>
+              <MenuLink label="Giới thiệu" to='/about' activeOnlyWhenExact="true"/>
+              <MenuLink label="Liên hệ" to='/contact' activeOnlyWhenExact="true"/>
             </ul>
         </nav>
         <Switch>

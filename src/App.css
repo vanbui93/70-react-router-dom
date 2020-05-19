@@ -37,7 +37,6 @@
   }
 }
 
-.nav-item .selected {
-  background: #fff;
-  color: #f00 !important;
+.selected a{
+  color: #f5c242 !important;
 }
