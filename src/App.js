@@ -16,30 +16,21 @@ function App() {
       <div className="App">
         <nav className="navbar navbar-expand navbar-dark bg-dark">
             <ul className="nav navbar-nav">
-                <li className="nav-item active">
+                <li className="nav-item">
                   <NavLink 
-                    activeStyle={{
-                      backgroundColor: "white",
-                      color: "red"
-                    }}
+                    activeClassName="selected"
                     className="nav-link" exact to="/" 
                   >Trang chủ <span className="sr-only">(current)</span></NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink 
-                    activeStyle={{
-                      backgroundColor: "white",
-                      color: "red"
-                    }}
+                    activeClassName="selected"
                     className="nav-link" to="/about"
                   >Giới thiệu</NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink 
-                    activeStyle={{
-                      backgroundColor: "white",
-                      color: "red"
-                    }}
+                    activeClassName="selected"
                     className="nav-link" to="/contact"
                   >Liên hệ</NavLink>
                 </li>
