@@ -2,11 +2,12 @@ import React from 'react';
 import './App.css';
 import Home from './components/Home';
 import About from './components/About';
+import Contact from './components/Contact';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  NavLink
 } from "react-router-dom";
 
 function App() {
@@ -16,16 +17,38 @@ function App() {
         <nav className="navbar navbar-expand navbar-dark bg-dark">
             <ul className="nav navbar-nav">
                 <li className="nav-item active">
-                  <Link className="nav-link" to="/">Trang chủ <span className="sr-only">(current)</span></Link>
+                  <NavLink 
+                    activeStyle={{
+                      backgroundColor: "white",
+                      color: "red"
+                    }}
+                    className="nav-link" exact to="/" 
+                  >Trang chủ <span className="sr-only">(current)</span></NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/about">Liên hệ</Link>
+                  <NavLink 
+                    activeStyle={{
+                      backgroundColor: "white",
+                      color: "red"
+                    }}
+                    className="nav-link" to="/about"
+                  >Giới thiệu</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink 
+                    activeStyle={{
+                      backgroundColor: "white",
+                      color: "red"
+                    }}
+                    className="nav-link" to="/contact"
+                  >Liên hệ</NavLink>
                 </li>
             </ul>
         </nav>
         <Switch>
           <Route exact path="/about" component={About}/>
           <Route exact path="/" component={Home}/>
+          <Route exact path="/contact" component={Contact}/>
         </Switch>
       </div>
     </Router>
