@@ -20,7 +20,8 @@ const MenuLink = ({label, to, activeOnlyWhenExact}) => {
       path={to} exact={activeOnlyWhenExact} children={({match}) => {
         var active = match ? "nav-item selected" : '';
         return (
-          <li className={active}>
+          //cách viết ES6, TH ko trùng khớp my-li, trùng khớp my-li & {active}
+          <li className={`my-li ${active}`}>  
             <Link className="nav-link" to={to}>
               {label}
             </Link>
