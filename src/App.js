@@ -1,31 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import Home from './components/Home';
-import About from './components/About';
-import Contact from './components/Contact';
-import NotFound from './components/NotFound';
-import Nav from './components/Nav';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
 
-function App() {
-  return (
-    <Router>
-      <div className="App">
-        <Nav/>
-        {/* Switch => sử dụng giống Switch case*/}
-        <Switch>
-          <Route exact path="/about" component={About}/>
-          <Route exact path="/" component={Home}/>
-          <Route exact path="/contact" component={Contact}/>
-          <Route component={NotFound}/>
-        </Switch>
-      </div>
-    </Router>
-  );
+import routes from './components/Routes';
+import Nav from './components/Nav';
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+class App extends Component {
+  showRoute = (routes) => {
+    var result = null;
+    if (routes.length > 0) {
+      result = routes.map((route, index) => {
+        return (
+          <Route
+            key={index}
+            exact={route.exact}
+            path={route.path}
+            component={route.main}
+          />
+        );
+      })
+    }
+    return result;
+  }
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <Nav />
+          {/* Switch => sử dụng giống Switch case*/}
+          <Switch>
+            {this.showRoute(routes)}
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;

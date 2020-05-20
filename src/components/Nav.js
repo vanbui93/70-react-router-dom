@@ -22,14 +22,49 @@ const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
   )
 }
 
+//Tạo ra 1 mảng quản lý menu, đổ menu động
+const menus = [
+  {
+    name: 'Trang chủ',
+    to: '/',
+    exact: true
+  },
+  {
+    name: 'Giới thiệu',
+    to: '/about',
+    exact: false
+  },
+  {
+    name: 'Liện hệ',
+    to: '/contact',
+    exact: false
+  }
+];
+
 export default class Nav extends Component {
+
+  showMenus = (menus) => {
+    var result = null;
+    if(menus.length > 0) {
+      result = menus.map((menu,index) => {
+        return (
+          <MenuLink 
+            key={index} 
+            label={menu.name} 
+            to={menu.to} 
+            activeOnlyWhenExact={menu.exact} 
+          />
+        )
+      });
+    }
+    return result;
+  }
+
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <ul className="nav navbar-nav">
-          <MenuLink label="Trang chủ" to='/' activeOnlyWhenExact="true" />
-          <MenuLink label="Giới thiệu" to='/about' activeOnlyWhenExact="true" />
-          <MenuLink label="Liên hệ" to='/contact' activeOnlyWhenExact="true" />
+          {this.showMenus(menus)}
         </ul>
       </nav>
     )
