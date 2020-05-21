@@ -38,6 +38,11 @@ const menus = [
     name: 'Liện hệ',
     to: '/contact',
     exact: false
+  },
+  {
+    name: 'Sản phẩm',
+    to: '/products',
+    exact: false
   }
 ];
 
