@@ -4,6 +4,7 @@ import About from './About';
 import Contact from './Contact';
 import NotFound from './NotFound';
 import Products from './Products';
+import Login from './Login';
 
 //main phải là 1 around function
 //match là đầu vào của main, match là 1 object chứa thông tin về cách 1 thẻ a <Route path> trùng khớp với url
@@ -28,6 +29,11 @@ const routes = [
     path: '/products',
     exact: false,
     main: ({match}) => <Products match={match}/>
+  },
+  {
+    path: '/login',
+    exact: false,
+    main: ({match}) => <Login match={match}/>
   },
   {
     path: '',
