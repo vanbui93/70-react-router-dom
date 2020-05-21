@@ -38,6 +38,11 @@ export default class Products extends Component {
         </NavLink>
       )
     })
+
+    var { location } = this.props;
+    console.log(location);
+
+
     return (
       <div className="container">
         <h1>Danh sách sản phẩm</h1>

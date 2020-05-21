@@ -36,9 +36,19 @@ export default class Login extends Component {
     var { txtUsename, txtPassword } = this.state;
     var loginAccount = localStorage.getItem('user');
     console.log(loginAccount);
-    if(loginAccount !==null){
-      return <Redirect to="/products" />
+    if (loginAccount !== null) {
+      var { location } = this.props;
+      return <Redirect to={{
+        pathname: '/products',
+        state: {                       //state là thông tin của trang login sẽ dc gửi đi để trang đích nhận được
+          from: location
+        }
+      }} />
     }
+
+    var { location } = this.props;
+    console.log(location); //location chỉ là vị trí page đang đứng
+
     return (
       <div className="container">
         <div className="row mt-5">
