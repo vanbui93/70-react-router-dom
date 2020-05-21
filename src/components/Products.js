@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Route, Link, NavLink } from "react-router-dom";
+import { Route, NavLink } from "react-router-dom";
+import ProductItem from './ProductItem';
 
 export default class Products extends Component {
   render() {
@@ -24,10 +25,9 @@ export default class Products extends Component {
       }
     ];
 
-    var {match} = this.props;
-    console.log(match);
+    var { match } = this.props;
     var url = match.url;
-    
+
 
     var result = products.map((product, index) => {
       return (
@@ -39,14 +39,17 @@ export default class Products extends Component {
       )
     })
     return (
-      <div>
+      <div className="container">
         <h1>Danh sách sản phẩm</h1>
         <div className="row">
           <div className="col">
-            <ul className="list-group">
+            <ul className="list-group list-group-fluid">
               {result}
             </ul>
           </div>
+        </div>
+        <div className="row">
+          <Route path="/products/:slug" component={ProductItem} />
         </div>
       </div>
     )

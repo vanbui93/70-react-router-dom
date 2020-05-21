@@ -7,6 +7,7 @@ import Products from './Products';
 
 //main phải là 1 around function
 //match là đầu vào của main, match là 1 object chứa thông tin về cách 1 thẻ a <Route path> trùng khớp với url
+// thông qua match có thể lấy được url, params, path
 const routes = [
   {
     path: '/',
